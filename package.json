@@ -6,7 +6,9 @@
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only server.ts",
     "start:prod": "NODE_ENV=production ts-node-dev --respawn --transpile-only server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "seed:import": "ts-node-dev --transpile-only dev-data/data/import-dev-data.ts --import",
+    "seed:delete": "ts-node-dev --transpile-only dev-data/data/import-dev-data.ts --delete"
   },
   "author": "Brayan Acosta",
   "license": "ISC",
