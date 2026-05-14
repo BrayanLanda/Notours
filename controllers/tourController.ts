@@ -44,7 +44,12 @@ export const getTour = async (
   res: Response<TourSingleResponse | ApiErrorResponse>
 ): Promise<void> => {
   try {
-    const tour = await Tour.findById(req.params.id);
+    const queryObj = { ...req.query };
+    const excludedFields = ["page", "sort", "limit", "fields"];
+    excludedFields.forEach((el) => delete queryObj[el]);
+
+    const query = Tour.find(queryObj);
+    const tour = await query;
     res.status(200).json({
       status: "success",
       data: {
